@@ -29,17 +29,18 @@ export default function Game() {
 
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <button className="text-blue-600 underline hover:text-blue-800" onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
   });
 
   return (
-    <div className="game">
-      <div className="game-board">
+    <div className="flex flex-col flex-row gap-8 items-start justify-center">
+      <div>
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
-      <div className="game-info">
+      <div className="text-center">
+        <h2 className="text-lg font-semibold mb-2 ">History</h2>
         <ol>{moves}</ol>
       </div>
     </div>
