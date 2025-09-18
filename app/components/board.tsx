@@ -24,23 +24,14 @@ export default function Board({xIsNext,squares,onPlay}:BoardProps){
     : "Next player: " + (xIsNext ? "X" : "O");
 
   return (
-    <>
-      <div className="status">{status}</div>
-      <div className="board-row">
-        <Square value={squares[0]} SquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} SquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} SquareClick={() => handleClick(2)} />
+    <div className="flex flex-col items-center gap-4">
+      <div className="text-xl font-semibold">{status}</div>
+
+      <div className="grid grid-cols-3 gap-1">
+        {squares.map((square, i) => (
+          <Square key={i} value={square} SquareClick={() => handleClick(i)} />
+        ))}
       </div>
-      <div className="board-row">
-        <Square value={squares[3]} SquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} SquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} SquareClick={() => handleClick(5)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[6]} SquareClick={() => handleClick(6)} />
-        <Square value={squares[7]} SquareClick={() => handleClick(7)} />
-        <Square value={squares[8]} SquareClick={() => handleClick(8)} />
-      </div>
-    </>
+    </div>
   );
 }
